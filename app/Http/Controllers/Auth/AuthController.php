@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace SmartBell\Http\Controllers\Auth;
 
-use App\User;
+use SmartBell\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use SmartBell\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

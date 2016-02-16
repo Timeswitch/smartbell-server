@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        SmartBell\Providers\AppServiceProvider::class,
+        SmartBell\Providers\AuthServiceProvider::class,
+        SmartBell\Providers\EventServiceProvider::class,
+        SmartBell\Providers\RouteServiceProvider::class,
 
     ],
 

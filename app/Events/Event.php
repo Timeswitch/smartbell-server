@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace SmartBell\Events;
 
 abstract class Event
 {
