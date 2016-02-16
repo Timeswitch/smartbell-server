@@ -26,6 +26,15 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group(['prefix' => 'api'], function () {
+    Route::group(['prefix' => 'v1'],function(){
+
+        Route::controller('auth','AuthenticationController');
+
+        Route::group(['middleware' => ['jwt.auth','jwt.refresh']], function (){
+
+        });
+
+
+    });
 });
