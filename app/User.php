@@ -23,4 +23,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function bells(){
+        return $this->hasMany('SmartBell\Bell');
+    }
+
+    public function push_clients(){
+        return $this->hasMany('SmartBell\PushClient');
+    }
+
+    public function rings(){
+        return $this->hasMany('SmartBell\Ring');
+    }
 }
