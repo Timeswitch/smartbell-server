@@ -21,7 +21,8 @@
                     controller: 'LoginController as loginController'
                 })
                 .when('/signup',{
-                    templateUrl: 'templats/signup.html'
+                    templateUrl: 'templates/signup.html',
+                    controller: 'SignupController as signupController'
                 })
                 .otherwise({
                     redirectTo: '/login'

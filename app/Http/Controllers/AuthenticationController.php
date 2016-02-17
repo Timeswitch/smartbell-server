@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use SmartBell\Http\Requests;
 use SmartBell\Http\Controllers\Controller;
+use SmartBell\User;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -18,8 +19,7 @@ class AuthenticationController extends Controller
 
         //TODO Validation
 
-        return User::create([
-            'name' => $data['name'],
+        User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

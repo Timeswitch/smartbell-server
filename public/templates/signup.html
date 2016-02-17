@@ -3,7 +3,7 @@
         <md-card>
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline">Login</span>
+                    <span class="md-headline">Registrierung</span>
                 </md-card-title-text>
                 <md-card-title-text>
                     <span ng-if="loginController.formErrors" class="md-subhead">Bitte überprüfen Sie Ihre Eingaben.</span>
@@ -23,11 +23,10 @@
                     <label>Passwort wiederholen</label>
                     <input ng-model="signupController.user.passwordRepeat" type="password">
                 </md-input-container>
-
             </md-card-content>
 
             <md-card-actions layout="row" layout-align="start center">
-                <md-button ng-click="loginController.signup()">Registrieren</md-button>
+                <md-button ng-click="signupController.signup()">Registrieren</md-button>
             </md-card-actions>
         </md-card>
     </div>

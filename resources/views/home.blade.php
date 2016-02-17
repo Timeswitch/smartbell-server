@@ -30,5 +30,6 @@
 
         <!-- Controllers -->
         <script src="{{ asset('js/controllers/LoginController.js') }}"></script>
+        <script src="{{ asset('js/controllers/SignupController.js') }}"></script>
     </body>
 </html>
