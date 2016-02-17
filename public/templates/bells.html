@@ -1,0 +1,7 @@
+<md-list ng-cloak>
+    <md-list-item ng-repeat="bell in bellController.bells">
+        <md-icon md-svg-src="lib/material-design-icons/hardware/svg/production/ic_developer_board_24px.svg"></md-icon>
+        <p> {{ bell.name }} </p>
+        <md-switch class="md-secondary" ng-model="bell.active"></md-switch>
+    </md-list-item>
+</md-list>

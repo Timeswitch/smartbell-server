@@ -20,6 +20,10 @@
                     templateUrl: 'templates/home.html',
                     controller: 'HomeController as homeController'
                 })
+                .when('/bells',{
+                    templateUrl: 'templates/bells.html',
+                    controller: 'BellController as bellController'
+                })
                 .when('/login',{
                     templateUrl: 'templates/login.html',
                     controller: 'LoginController as loginController'

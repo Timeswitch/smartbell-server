@@ -14,8 +14,23 @@
             </div>
         </md-toolbar>
 
-        <md-content flex ng-view>
-        </md-content>
+        <div layout="row" flex>
+            <md-sidenav md-component-id="left" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')">
+                <md-content flex layout="column" layout-padding>
+                    <md-button class="md-primary" href="#/home">Alles Anzeigen</md-button>
+                    <md-button href="#/bells/id"></md-button>
+                    <md-button href="#/bells">Klingeln verwalten...</md-button>
+                    <md-divider></md-divider>
+                    <md-button>
+                        <md-icon md-svg-src="{{ asset('lib/material-design-icons/action/svg/production/ic_settings_24px.svg') }}"></md-icon>
+                        Einstellungen
+                    </md-button>
+                </md-content>
+            </md-sidenav>
+
+            <md-content flex ng-view>
+            </md-content>
+        </div>
 
         <script src="{{ asset('lib/angular/angular.min.js') }}"></script>
         <script src="{{ asset('lib/angular-route/angular-route.min.js') }}"></script>
@@ -32,10 +47,12 @@
         <!-- Factories -->
         <script src="{{ asset('js/factories/TokenRefreshInterceptor.js') }}"></script>
         <script src="{{ asset('js/factories/Ring.js') }}"></script>
+        <script src="{{ asset('js/factories/Bell.js') }}"></script>
 
         <!-- Controllers -->
         <script src="{{ asset('js/controllers/LoginController.js') }}"></script>
         <script src="{{ asset('js/controllers/SignupController.js') }}"></script>
         <script src="{{ asset('js/controllers/HomeController.js') }}"></script>
+        <script src="{{ asset('js/controllers/BellController.js') }}"></script>
     </body>
 </html>

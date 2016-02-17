@@ -33,6 +33,7 @@ Route::group(['prefix' => 'api'], function () {
 
         Route::group(['middleware' => ['jwt.auth','jwt.refresh']], function (){
             Route::controller('rings','RingController');
+            Route::controller('bells','BellController');
         });
 
 

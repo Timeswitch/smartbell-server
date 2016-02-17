@@ -10,6 +10,7 @@
         return {
             response: function (response) {
                 if (response.headers('Authorization') != null) {
+                    console.log(response.headers('Authorization'));
                     $window.localStorage.setItem('satellizer_token', response.headers('Authorization').replace('Bearer ', ''));
                 }
 
