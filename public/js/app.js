@@ -5,16 +5,20 @@
     'use strict';
 
     angular.module('smartbell.controllers',[]);
+    angular.module('smartbell.factories',[]);
 
-    angular.module('smartbell', ['ngMaterial','ngRoute','satellizer','smartbell.controllers'])
-        .config(function($authProvider, $routeProvider){
+    angular.module('smartbell', ['ngMaterial','ngRoute', 'ngResource','satellizer','smartbell.controllers','smartbell.factories'])
+        .config(function($httpProvider, $authProvider, $routeProvider){
+
+            $httpProvider.interceptors.push('TokenRefreshInterceptor');
 
             $authProvider.loginUrl = '/api/v1/auth/login';
             $authProvider.signupUrl = '/api/v1/auth/signup';
 
             $routeProvider
                 .when('/home',{
-                    templateUrl: 'templates/home.html'
+                    templateUrl: 'templates/home.html',
+                    controller: 'HomeController as homeController'
                 })
                 .when('/login',{
                     templateUrl: 'templates/login.html',
