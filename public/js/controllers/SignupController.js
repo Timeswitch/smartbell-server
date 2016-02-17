@@ -6,7 +6,8 @@
 
     angular.module('smartbell.controllers').controller('SignupController',SignupController);
 
-    function SignupController($auth,$location){
+    function SignupController($rootScope,$auth,$location){
+        this.$rootScope = $rootScope;
         this.$auth = $auth;
         this.$location = $location;
 
@@ -17,6 +18,12 @@
         };
 
         this.formErrors = false;
+
+        if(this.$auth.isAuthenticated()){
+            this.$location.path('/home');
+        }else{
+            this.$rootScope.showNavs = false;
+        }
     }
 
     SignupController.prototype.signup = function(){

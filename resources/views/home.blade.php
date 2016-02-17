@@ -8,7 +8,7 @@
 
         <md-toolbar md-scroll-shrink>
             <div class="md-toolbar-tools">
-                <md-button hide-gt-sm ng-click="toggleNav('left')" class="md-icon-button">
+                <md-button hide-gt-sm ng-click="toggleNav('left')" class="md-icon-button" ng-if="showNavs">
                     <md-icon md-svg-src="lib/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
                 </md-button>
                 <h3>

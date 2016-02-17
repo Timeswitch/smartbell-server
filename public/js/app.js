@@ -36,5 +36,8 @@
                     redirectTo: '/login'
                 });
 
-        });
+        }).run(function($rootScope){
+            $rootScope.showNavs = true;
+
+    });
 })();
