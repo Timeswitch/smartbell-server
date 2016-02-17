@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePushclientsTable extends Migration
+class CreatePushClientsTable extends Migration
 {
     /**
      * Run the migrations.
