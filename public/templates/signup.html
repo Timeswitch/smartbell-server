@@ -13,18 +13,21 @@
             <md-card-content>
                 <md-input-container class="md-icon-float md-block">
                     <label>E-Mail</label>
-                    <input ng-model="loginController.user.email" type="text">
+                    <input ng-model="signupController.user.email" type="text">
                 </md-input-container>
                 <md-input-container class="md-icon-float md-block">
                     <label>Passwort</label>
-                    <input ng-model="loginController.user.password" type="password">
+                    <input ng-model="signupController.user.password" type="password">
+                </md-input-container>
+                <md-input-container class="md-icon-float md-block">
+                    <label>Passwort wiederholen</label>
+                    <input ng-model="signupController.user.passwordRepeat" type="password">
                 </md-input-container>
 
             </md-card-content>
 
             <md-card-actions layout="row" layout-align="start center">
-                <md-button ng-click="loginController.login()">Login</md-button>
-                <md-button ng-href="#/signup">Registrieren</md-button>
+                <md-button ng-click="loginController.signup()">Registrieren</md-button>
             </md-card-actions>
         </md-card>
     </div>
