@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ring extends Model
 {
+    protected $fillable = [
+        'user_id', 'bell_id', 'file'
+    ];
+
     public function user(){
         return $this->belongsTo('SmartBell\User');
     }

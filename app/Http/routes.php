@@ -33,10 +33,15 @@ Route::group(['prefix' => 'api'], function () {
 
         Route::group(['middleware' => ['jwt.auth','jwt.refresh']], function (){
 
-            Route::controller('rings','RingController');
+            Route::get('rings/','RingController@index');
+            Route::get('rings/{id}','RingController@show');
+            Route::delete('rings/{id}','RingController@show');
 
-            Route::get('bells/','BellController@getIndex');
-            Route::get('bells/{id}','BellController@getShow');
+            Route::get('bells/','BellController@index');
+            Route::post('bells/','BellController@getIndex');
+            Route::get('bells/{id}','BellController@show');
+            Route::put('bells/{id}','BellController@update');
+            Route::post('bells/{id}/ring','BellController@createRing');
         });
 
 

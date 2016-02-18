@@ -9,7 +9,7 @@ use SmartBell\Http\Requests;
 class RingController extends APIController
 {
 
-    public function getIndex(){
+    public function index(){
         $rings = $this->currentUser->rings;
         $result = [];
 
@@ -27,5 +27,17 @@ class RingController extends APIController
 
         return $result;
 
+    }
+
+    public function show($id){
+        $ring = $this->currentUser->rings()->where('id',$id)->get()->first();
+        //TODO machen
+    }
+
+    public function destroy($id){
+        $ring = $this->currentUser->rings()->where('id',$id)->get()->first();
+        $ring->delete();
+
+        return ['success'];
     }
 }

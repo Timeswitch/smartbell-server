@@ -4,12 +4,14 @@ namespace SmartBell\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Mockery\CountValidator\Exception;
 use SmartBell\Http\Requests;
 use SmartBell\Http\Controllers\Controller;
+use SmartBell\Ring;
 
 class BellController extends APIController
 {
-    public function getIndex(){
+    public function index(){
 
         $bells = $this->currentUser->bells;
 
@@ -28,7 +30,11 @@ class BellController extends APIController
         return $result;
     }
 
-    public function getShow($id) {
+    public function post(Request $req){
+        //TODO implementieren
+    }
+
+    public function show($id) {
         $bell = $this->currentUser->bells()->where('id',$id)->get()->first();
 
         $result = [];
@@ -50,6 +56,29 @@ class BellController extends APIController
 
         return $result;
 
+    }
+
+    public function update($id, Request $req){
+        $bell = $this->currentUser->bells()->where('id',$id)->get()->first();
+        //TODO implementieren
+    }
+
+    public function createRing($id, Request $request){
+        try{
+            $bell = $this->currentUser->bells()->where('id',$id)->get()->first();
+
+            $ring = Ring::create([
+                'user_id' => $this->currentUser->id,
+                'bell_id' => $bell->id,
+                'file' => ''
+            ]);
+
+            //TODO Push, etc
+
+            return ['success'];
+        }catch(Exception $e){
+            return ['failure'];
+        }
     }
 
 
