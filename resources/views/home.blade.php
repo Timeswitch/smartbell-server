@@ -20,19 +20,47 @@
         </md-toolbar>
 
         <div layout="row" flex>
-            <md-sidenav md-component-id="left" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')" ng-if="showNavs">
-                <md-content flex layout="column" layout-padding ng-controller="SidenavController as sidenavController">
-                    <md-button class="md-primary" href="#/home">Alles Anzeigen</md-button>
-                    <md-button ng-repeat="bell in sidenavController.bells" href="#/bells/@{{bell.id}}">
-                        <md-icon md-svg-src="{{ asset('lib/material-design-icons/hardware/svg/production/ic_developer_board_24px.svg') }}"></md-icon>
-                        @{{ bell.name }}
-                    </md-button>
-                    <md-button href="#/bells">Klingeln verwalten...</md-button>
-                    <md-divider></md-divider>
-                    <md-button>
-                        <md-icon md-svg-src="{{ asset('lib/material-design-icons/action/svg/production/ic_settings_24px.svg') }}"></md-icon>
-                        Einstellungen
-                    </md-button>
+            <md-sidenav md-component-id="left" flex class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')" ng-if="showNavs">
+
+
+
+                <md-content layout="column" flex layout-fill ng-controller="SidenavController as sidenavController">
+                    <md-toolbar md-scroll-shrink hide-gt-sm>
+                        <div class="md-toolbar-tools">
+                            <span>Navigation</span>
+                        </div>
+                    </md-toolbar>
+                    <md-list flex="grow">
+                        <div layout="row" layout-align="start center" flex>
+                            <md-button class="md-primary" href="#/home">Alles Anzeigen</md-button>
+                            <span flex></span>
+                        </div>
+
+                        <div layout="row" layout-align="start center" flex>
+                            <md-button ng-repeat="bell in sidenavController.bells" href="#/bells/@{{bell.id}}">
+                                <md-icon md-svg-src="{{ asset('lib/material-design-icons/hardware/svg/production/ic_developer_board_24px.svg') }}"></md-icon>
+                                @{{ bell.name }}
+                            </md-button>
+                        </div>
+
+                        <div layout="row" layout-align="start center" flex>
+                            <md-button href="#/bells">Klingeln verwalten...</md-button>
+                        </div>
+
+
+                    </md-list>
+
+                    <md-list>
+                        <md-divider></md-divider>
+
+                        <div layout="row" layout-align="start center" flex>
+                            <md-button>
+                                <md-icon md-svg-src="{{ asset('lib/material-design-icons/action/svg/production/ic_settings_24px.svg') }}"></md-icon>
+                                Einstellungen
+                            </md-button>
+                        </div>
+                    </md-list>
+
                 </md-content>
             </md-sidenav>
 
