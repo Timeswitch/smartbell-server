@@ -49,7 +49,7 @@ class NotificationController extends Controller
             }
 
             return ['success'];
-        }catch(Exception $e){
+        }catch(\Exception $e){
             return ['failure'];
         }
     }
