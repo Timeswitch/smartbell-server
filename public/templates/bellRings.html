@@ -1,4 +1,6 @@
-<md-list flex layout-padding>
+<md-list ng-cloak flex layout-padding>
+    <h2 class="md-title">Besuche von "{{ bellRingController.bell.name }}"</h2>
+
     <md-list-item ng-repeat="ring in bellRingController.rings">
         <img ng-src="{{ring.image}}" class="md-" />
         <div class="md-list-item-text">

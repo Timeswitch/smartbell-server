@@ -10,9 +10,11 @@
         var vm = this;
         vm.id = $routeParams.id;
         vm.rings = [];
+        vm.bell = {};
 
         Bell.get({bellId: this.id},function(bell){
             vm.rings = bell.rings;
+            vm.bell = bell;
         });
 
     }

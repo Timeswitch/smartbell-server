@@ -1,4 +1,6 @@
-<md-list ng-cloak>
+<md-list ng-cloak flex layout-padding>
+    <h2 class="md-title">Klingeln verwalten</h2>
+
     <md-list-item ng-repeat="bell in bellController.bells">
         <md-icon md-svg-src="lib/material-design-icons/hardware/svg/production/ic_developer_board_24px.svg"></md-icon>
         <p> {{ bell.name }} </p>
