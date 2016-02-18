@@ -159,7 +159,7 @@ return [
         /*
          * Third-Party Providers
          */
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
 
     ],

@@ -4,7 +4,7 @@ namespace SmartBell;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements \Tymon\JWTAuth\Contracts\JWTSubject
 {
     /**
      * The attributes that are mass assignable.
@@ -23,6 +23,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getJWTIdentifier(){
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(){
+        return [];
+    }
 
     public function bells(){
         return $this->hasMany('SmartBell\Bell');

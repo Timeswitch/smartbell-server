@@ -21,7 +21,10 @@
             <md-sidenav md-component-id="left" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')">
                 <md-content flex layout="column" layout-padding ng-controller="SidenavController as sidenavController">
                     <md-button class="md-primary" href="#/home">Alles Anzeigen</md-button>
-                    <md-button href="#/bells/id"></md-button>
+                    <md-button ng-repeat="bell in sidenavController.bells" href="#/bells/@{{bell.id}}">
+                        <md-icon md-svg-src="{{ asset('lib/material-design-icons/hardware/svg/production/ic_developer_board_24px.svg') }}"></md-icon>
+                        @{{ bell.name }}
+                    </md-button>
                     <md-button href="#/bells">Klingeln verwalten...</md-button>
                     <md-divider></md-divider>
                     <md-button>
