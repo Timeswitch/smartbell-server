@@ -16,7 +16,12 @@ class TestDataSeeder extends Seeder
             'password' => bcrypt('123')
         ]);
 
-        $bell = new \SmartBell\Bell();
+        $bell = \SmartBell\Bell::create([
+            'name' => "Test Klingel",
+            'user_id' => $user->id,
+            'active' => 1,
+            'uuid' => Uuid::generate(1)->string
+        ]);
         $bell->name = "Test Klingel";
         $bell->user_id = $user->id;
         $bell->active = true;

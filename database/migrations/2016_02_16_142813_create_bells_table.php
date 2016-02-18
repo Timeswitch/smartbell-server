@@ -16,6 +16,7 @@ class CreateBellsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name');
+            $table->string('uuid')->unique();
             $table->boolean('active');
             $table->timestamps();
 

@@ -22,6 +22,7 @@ class BellController extends APIController
 
             $obj['id'] = $bell->id;
             $obj['name'] = $bell->name;
+            $obj['uuid'] = $bell->uuid;
             $obj['active'] = $bell->active;
 
             $result[] = $obj;
@@ -41,6 +42,7 @@ class BellController extends APIController
 
         $result['id'] = $bell->id;
         $result['name'] = $bell->name;
+        $obj['uuid'] = $bell->uuid;
         $result['rings'] = [];
 
         foreach($bell->rings as $ring){
