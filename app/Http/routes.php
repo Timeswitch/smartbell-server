@@ -30,6 +30,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::group(['prefix' => 'v1'],function(){
 
         Route::controller('auth','AuthenticationController');
+        Route::post('ring/{uuid}','BellController@createRing');
 
         Route::group(['middleware' => ['jwt.auth','jwt.refresh']], function (){
 
@@ -42,7 +43,6 @@ Route::group(['prefix' => 'api'], function () {
             Route::get('bells/{id}','BellController@show');
             Route::post('bells/{id}','BellController@update');
             Route::delete('bells/{id}','BellController@destroy');
-            Route::post('bells/{id}/ring','BellController@createRing');
         });
 
 

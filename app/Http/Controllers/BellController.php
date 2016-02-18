@@ -5,6 +5,7 @@ namespace SmartBell\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Mockery\CountValidator\Exception;
+use SmartBell\Bell;
 use SmartBell\Http\Requests;
 use SmartBell\Http\Controllers\Controller;
 use SmartBell\Ring;
@@ -85,9 +86,9 @@ class BellController extends APIController
         $bell->delete();
     }
 
-    public function createRing($id, Request $request){
+    public function createRing($uuid, Request $request){
         try{
-            $bell = $this->currentUser->bells()->where('id',$id)->get()->first();
+            $bell = Bell::where('uuid',$uuid)->first();
 
             $ring = Ring::create([
                 'user_id' => $this->currentUser->id,
