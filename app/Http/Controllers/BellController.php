@@ -73,7 +73,19 @@ class BellController extends APIController
                 'file' => ''
             ]);
 
-            //TODO Push, etc
+            $clients = $this->currentUser->push_clients;
+
+            if(!$clients->isEmpty() && $bell->active == 1){
+
+                $http = new \GuzzleHttp\Client();
+
+                $res = $http->request('POST','https://gcm-http.googleapis.com/gcm/send',[
+                    'headers' => ['Authorization' => env('SMARTBELL_GCM')],
+                    'json' => [] //TODO weiter machen
+
+                ]);
+
+            }
 
             return ['success'];
         }catch(Exception $e){
