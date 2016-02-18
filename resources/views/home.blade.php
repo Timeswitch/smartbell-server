@@ -11,9 +11,11 @@
                 <md-button hide-gt-sm ng-click="toggleNav('left')" class="md-icon-button" ng-if="showNavs">
                     <md-icon md-svg-src="lib/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
                 </md-button>
-                <h3>
-                    <span>SmartBell</span>
-                </h3>
+                <span>SmartBell</span>
+                <span flex></span>
+                <md-button ng-click="logout()" ng-if="showNavs">
+                    Logout
+                </md-button>
             </div>
         </md-toolbar>
 
