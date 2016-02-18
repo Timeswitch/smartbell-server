@@ -8,7 +8,7 @@ class Bell extends Model
 {
 
     public function rings(){
-        $this->hasMany('SmartBell\Ring');
+        return $this->hasMany('SmartBell\Ring');
     }
 
     public function user(){

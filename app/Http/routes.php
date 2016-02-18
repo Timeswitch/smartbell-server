@@ -32,8 +32,11 @@ Route::group(['prefix' => 'api'], function () {
         Route::controller('auth','AuthenticationController');
 
         Route::group(['middleware' => ['jwt.auth','jwt.refresh']], function (){
+
             Route::controller('rings','RingController');
-            Route::controller('bells','BellController');
+
+            Route::get('bells/','BellController@getIndex');
+            Route::get('bells/{id}','BellController@getShow');
         });
 
 

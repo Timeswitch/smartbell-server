@@ -1,9 +1,8 @@
 <md-list flex layout-padding>
-    <md-list-item class="md-2-line" ng-repeat="ring in homeController.rings">
+    <md-list-item ng-repeat="ring in bellRingController.rings">
         <img ng-src="{{ring.image}}" class="md-" />
         <div class="md-list-item-text">
             <h3>{{ ring.date.date }}</h3>
-            <p>von "<a href="#/bells/{{ring.bell_id}}">{{ ring.bell }}</a>"</p>
         </div>
     </md-list-item>
 </md-list>

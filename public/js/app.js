@@ -24,6 +24,10 @@
                     templateUrl: 'templates/bells.html',
                     controller: 'BellController as bellController'
                 })
+                .when('/bells/:id',{
+                    templateUrl: 'templates/bellRings.html',
+                    controller: 'BellRingController as bellRingController'
+                })
                 .when('/login',{
                     templateUrl: 'templates/login.html',
                     controller: 'LoginController as loginController'

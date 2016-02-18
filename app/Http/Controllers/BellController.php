@@ -9,8 +9,10 @@ use SmartBell\Http\Controllers\Controller;
 
 class BellController extends APIController
 {
-    public function getIndex(Request $req){
+    public function getIndex(){
+
         $bells = $this->currentUser->bells;
+
         $result = [];
 
         foreach($bells as $bell){
@@ -25,4 +27,30 @@ class BellController extends APIController
 
         return $result;
     }
+
+    public function getShow($id) {
+        $bell = $this->currentUser->bells()->where('id',$id)->get()->first();
+
+        $result = [];
+
+        $result['id'] = $bell->id;
+        $result['name'] = $bell->name;
+        $result['rings'] = [];
+
+        foreach($bell->rings as $ring){
+            $obj = [];
+
+            $obj['id'] = $ring->id;
+            $obj['date'] = $ring->created_at;
+            $obj['image'] = '';
+
+            $result['rings'][] = $obj;
+
+        }
+
+        return $result;
+
+    }
+
+
 }
