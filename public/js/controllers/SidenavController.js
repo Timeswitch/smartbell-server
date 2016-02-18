@@ -7,16 +7,24 @@
     angular.module('smartbell.controllers').controller('SidenavController',SidenavController);
 
     function SidenavController($rootScope, $mdSidenav, $auth, $location, Bell){
-        this.$rootScope = $rootScope;
-        this.$mdSidenav = $mdSidenav;
-        this.$location = $location;
-        this.$auth = $auth;
-        this.Bell = Bell;
+        var vm = this;
 
-        this.bells = this.queryBells();
+        vm.$rootScope = $rootScope;
+        vm.$mdSidenav = $mdSidenav;
+        vm.$location = $location;
+        vm.$auth = $auth;
+        vm.Bell = Bell;
 
-        this.$rootScope.logout = this.logout.bind(this);
-        this.$rootScope.toggleNav = this.toggleNav.bind(this);
+        vm.bells = [];
+
+        vm.$rootScope.logout = this.logout.bind(vm);
+        vm.$rootScope.toggleNav = this.toggleNav.bind(vm);
+
+        vm.queryBells();
+
+        $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+            vm.queryBells();
+        });
     }
 
     SidenavController.prototype.logout = function(){
@@ -29,11 +37,15 @@
     };
 
     SidenavController.prototype.queryBells = function(){
-        if(this.$auth.isAuthenticated()){
-            return this.bells = this.Bell.query();
+        var vm = this;
+        if(vm.$auth.isAuthenticated()){
+            vm.Bell.query(function(bells){
+                vm.bells = bells;
+            });
+        }else{
+            vm.bells = [];
         }
 
-        return [];
     }
 
 })();

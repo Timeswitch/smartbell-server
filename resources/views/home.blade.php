@@ -20,7 +20,7 @@
         </md-toolbar>
 
         <div layout="row" flex>
-            <md-sidenav md-component-id="left" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')">
+            <md-sidenav md-component-id="left" class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$mdMedia('gt-sm')" ng-if="showNavs">
                 <md-content flex layout="column" layout-padding ng-controller="SidenavController as sidenavController">
                     <md-button class="md-primary" href="#/home">Alles Anzeigen</md-button>
                     <md-button ng-repeat="bell in sidenavController.bells" href="#/bells/@{{bell.id}}">
