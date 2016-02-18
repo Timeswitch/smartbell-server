@@ -1,12 +1,26 @@
 <md-list ng-cloak flex layout-padding>
     <h2 class="md-title">Klingeln verwalten</h2>
 
-    <md-list-item class="md-2-line" ng-repeat="bell in bellController.bells">
+    <md-list-item class="md-2-line" ng-repeat="bell in bellController.bells" ng-click="bellController.show(bell)">
         <img class="md-avatar" src="lib/material-design-icons/hardware/svg/production/ic_developer_board_48px.svg">
         <div class="md-list-item-text">
             <h3> {{ bell.name }} </h3>
             <p>{{ bell.uuid }}</p>
         </div>
-        <md-switch class="md-secondary" ng-model="bell.active"></md-switch>
+        <div layout="row" layout-align="center center" class="md-secondary-container">
+            <md-switch ng-change="bellController.update(bell)" ng-model="bell.active"></md-switch>
+            <md-menu>
+                <md-button md-menu-origin ng-click="bellController.openMenu($mdOpenMenu,ev)" class="md-icon-button" >
+                    <md-icon  md-svg-icon="lib/material-design-icons/navigation/svg/production/ic_more_vert_24px.svg"></md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button ng-click="bellController.delete(bell)">
+                            Löschen
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
     </md-list-item>
 </md-list>

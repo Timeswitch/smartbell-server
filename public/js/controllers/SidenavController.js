@@ -25,6 +25,10 @@
         $rootScope.$on( "$routeChangeStart", function(event, next, current) {
             vm.queryBells();
         });
+
+        $rootScope.$on("bellsUpdated",function(){
+            vm.queryBells();
+        });
     }
 
     SidenavController.prototype.logout = function(){

@@ -74,8 +74,8 @@
         <script src="{{ asset('lib/angular-animate/angular-animate.min.js') }}"></script>
         <script src="{{ asset('lib/angular-aria/angular-aria.min.js') }}"></script>
         <script src="{{ asset('lib/angular-messages/angular-messages.min.js') }}"></script>
-        <script src="{{ asset('lib/angular-material/angular-material.min.js') }}"></script>
-
+        {{--<script src="{{ asset('lib/angular-material/angular-material.min.js') }}"></script>--}}
+<script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.0.5-master-9e7937e/angular-material.js"></script>
         <script src="{{ asset('lib/satellizer/satellizer.min.js') }}"></script>
 
         <script src="{{ asset('js/app.js') }}"></script>

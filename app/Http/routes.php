@@ -40,7 +40,8 @@ Route::group(['prefix' => 'api'], function () {
             Route::get('bells/','BellController@index');
             Route::post('bells/','BellController@getIndex');
             Route::get('bells/{id}','BellController@show');
-            Route::put('bells/{id}','BellController@update');
+            Route::post('bells/{id}','BellController@update');
+            Route::delete('bells/{id}','BellController@destroy');
             Route::post('bells/{id}/ring','BellController@createRing');
         });
 

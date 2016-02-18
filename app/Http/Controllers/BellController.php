@@ -42,7 +42,8 @@ class BellController extends APIController
 
         $result['id'] = $bell->id;
         $result['name'] = $bell->name;
-        $obj['uuid'] = $bell->uuid;
+        $result['uuid'] = $bell->uuid;
+        $result['active'] = $bell->active;
         $result['rings'] = [];
 
         foreach($bell->rings as $ring){
@@ -62,7 +63,26 @@ class BellController extends APIController
 
     public function update($id, Request $req){
         $bell = $this->currentUser->bells()->where('id',$id)->get()->first();
-        //TODO implementieren
+
+        if($req->has('name')){
+            $bell->name = $req->get('name');
+        }
+
+        if($req->has('active')){
+            $bell->active = $req->get('active');
+        }
+
+        $bell->save();
+
+        return $this->show($id);
+
+    }
+
+    public function destroy($id){
+        $bell = $this->currentUser->bells()->where('id',$id)->get()->first();
+
+        $bell->rings()->delete();
+        $bell->delete();
     }
 
     public function createRing($id, Request $request){
