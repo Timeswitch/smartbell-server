@@ -6,10 +6,11 @@
 
     angular.module('smartbell.controllers').controller('LoginController',LoginController);
 
-    function LoginController($rootScope,$auth,$location){
+    function LoginController($rootScope,$auth,$location,GCMService){
         this.$rootScope = $rootScope;
         this.$auth = $auth;
         this.$location = $location;
+        this.GCMService = GCMService;
 
         this.user = {
             email: '',
@@ -19,6 +20,7 @@
         this.formErrors = false;
 
         if(this.$auth.isAuthenticated()){
+            this.GCMService.init();
             this.$location.path('/home');
         }else{
             this.$rootScope.showNavs = false;
@@ -34,6 +36,8 @@
                 throw 'invalid_credentials';
             }
             vm.$rootScope.showNavs = true;
+            vm.GCMService.init();
+
             vm.$location.path('/home');
         }).catch(function(){
             vm.formErrors = true;

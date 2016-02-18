@@ -6,10 +6,11 @@
 
     angular.module('smartbell.controllers').controller('SidenavController',SidenavController);
 
-    function SidenavController($rootScope, $mdSidenav, $auth, $location, Bell){
+    function SidenavController($rootScope, $window, $mdSidenav, $auth, $location, Bell){
         var vm = this;
 
         vm.$rootScope = $rootScope;
+        vm.$window = $window;
         vm.$mdSidenav = $mdSidenav;
         vm.$location = $location;
         vm.$auth = $auth;
@@ -33,6 +34,7 @@
 
     SidenavController.prototype.logout = function(){
         this.$auth.logout();
+        this.$window.localStorage.removeItem('client_id');
         this.$location.path('/login');
     };
 

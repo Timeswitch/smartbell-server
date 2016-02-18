@@ -30,7 +30,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::group(['prefix' => 'v1'],function(){
 
         Route::controller('auth','AuthenticationController');
-        Route::post('ring/{uuid}','BellController@createRing');
+
+        Route::post('ring/{uuid}','NotificationController@ring');
+        Route::post('subscribe','NotificationController@subscribe');
+        Route::post('subscribe/{id}','NotificationController@refresh');
 
         Route::group(['middleware' => ['jwt.auth','jwt.refresh']], function (){
 

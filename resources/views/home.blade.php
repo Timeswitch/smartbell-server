@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
         <title>SmartBell</title>
+
+        <link rel="manifest" href="/manifest.json">
+
         <link rel="stylesheet" href="{{ asset('lib/angular-material/angular-material.min.css')}}">
     </head>
     <body ng-app="smartbell" layout="column" ng-cloak>
@@ -74,11 +80,13 @@
         <script src="{{ asset('lib/angular-animate/angular-animate.min.js') }}"></script>
         <script src="{{ asset('lib/angular-aria/angular-aria.min.js') }}"></script>
         <script src="{{ asset('lib/angular-messages/angular-messages.min.js') }}"></script>
-        {{--<script src="{{ asset('lib/angular-material/angular-material.min.js') }}"></script>--}}
-<script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.0.5-master-9e7937e/angular-material.js"></script>
+        <script src="{{ asset('lib/angular-material/angular-material.min.js') }}"></script>
         <script src="{{ asset('lib/satellizer/satellizer.min.js') }}"></script>
 
         <script src="{{ asset('js/app.js') }}"></script>
+
+        <!-- Services -->
+        <script src="{{ asset('js/services/GCMService.js') }}" ></script>
 
         <!-- Factories -->
         <script src="{{ asset('js/factories/TokenRefreshInterceptor.js') }}"></script>

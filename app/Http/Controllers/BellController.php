@@ -86,35 +86,5 @@ class BellController extends APIController
         $bell->delete();
     }
 
-    public function createRing($uuid, Request $request){
-        try{
-            $bell = Bell::where('uuid',$uuid)->first();
-
-            $ring = Ring::create([
-                'user_id' => $this->currentUser->id,
-                'bell_id' => $bell->id,
-                'file' => ''
-            ]);
-
-            $clients = $this->currentUser->push_clients;
-
-            if(!$clients->isEmpty() && $bell->active == 1){
-
-                $http = new \GuzzleHttp\Client();
-
-                $res = $http->request('POST','https://gcm-http.googleapis.com/gcm/send',[
-                    'headers' => ['Authorization' => env('SMARTBELL_GCM')],
-                    'json' => [] //TODO weiter machen
-
-                ]);
-
-            }
-
-            return ['success'];
-        }catch(Exception $e){
-            return ['failure'];
-        }
-    }
-
 
 }

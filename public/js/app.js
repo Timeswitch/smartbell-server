@@ -6,8 +6,9 @@
 
     angular.module('smartbell.controllers',[]);
     angular.module('smartbell.factories',[]);
+    angular.module('smartbell.services',[]);
 
-    angular.module('smartbell', ['ngMaterial','ngRoute', 'ngResource','satellizer','smartbell.controllers','smartbell.factories'])
+    angular.module('smartbell', ['ngMaterial','ngRoute', 'ngResource','satellizer','smartbell.controllers','smartbell.factories','smartbell.services'])
         .config(function($httpProvider, $authProvider, $routeProvider){
 
             $httpProvider.interceptors.push('TokenRefreshInterceptor');
