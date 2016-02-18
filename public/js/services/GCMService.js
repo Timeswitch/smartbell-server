@@ -11,6 +11,7 @@
         svc.$http = $http;
         svc.$window = $window;
 
+        svc.subscribtion = null;
         svc.supported = false;
         svc.enabled = $window.localStorage.getItem('disablePush') == null;
     }
@@ -95,6 +96,30 @@
         });
     };
 
+    GCMService.prototype.unsubscribe = function(){
+        var svc = this;
+        var token = /[^/]*$/.exec(svc.subscription.endpoint)[0];
+
+        if(svc.subscribtion != null){
+            svc.subscribtion.unsubscribe().then(function(){
+                svc.enabled = false;
+                var httpConfig = {
+                    method: 'POST',
+                    url: 'api/v1/unsubscribe',
+                    data: {
+                        token: token
+                    }
+                };
+
+                svc.$http(httpConfig).then(function(response){
+                    if(response.status == 200){
+                        svc.$window.localStorage.removeItem('client_id');
+                    }
+                });
+            });
+        }
+    };
+
     GCMService.prototype.registerSubscription = function(subscription){
         var svc = this;
         var token = /[^/]*$/.exec(subscription.endpoint)[0];
@@ -107,6 +132,8 @@
                 token: token
             }
         };
+
+        svc.subscribtion = subscription;
 
         if(clientId != null){
             httpConfig.url += '/'+clientId

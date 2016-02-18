@@ -6,7 +6,7 @@
 
     angular.module('smartbell.factories').factory('TokenRefreshInterceptor',TokenRefreshInterceptor);
 
-    function TokenRefreshInterceptor($window,$location) {
+    function TokenRefreshInterceptor($window,$location,GCMService) {
         return {
             response: function (response) {
                 if (response.headers('Authorization') != null) {
@@ -19,6 +19,7 @@
             responseError: function(response){
                 if(response.config.url != '/api/v1/auth/login' && response.config.url != '/api/v1/auth/signup'){
                     $window.localStorage.removeItem('satellizer_token');
+                    GCMService.unsubscribe();
                     $location.path('/login');
                 }
 

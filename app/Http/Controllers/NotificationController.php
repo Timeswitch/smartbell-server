@@ -71,6 +71,19 @@ class NotificationController extends Controller
 
     }
 
+    public function unsubscribe(Request $req){
+        if (! $currentUser = JWTAuth::parseToken()->authenticate()) {
+            return response()->json(['user_not_found'], 404);
+        }
+
+        $client = $currentUser->push_clients->where('token',$req->get('token'))->first();
+
+        if($client && $req->has('token')){
+            $client = $currentUser->push_clients->where('token',$req->get('token'))->first();
+            $client->delete();
+        }
+    }
+
     public function refresh($id, Request $req){
         if (! $currentUser = JWTAuth::parseToken()->authenticate()) {
             return response()->json(['user_not_found'], 404);
