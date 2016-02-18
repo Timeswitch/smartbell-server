@@ -29,7 +29,10 @@
     LoginController.prototype.login = function(){
         var vm = this;
 
-        vm.$auth.login(vm.user).then(function(){
+        vm.$auth.login(vm.user).then(function(response){
+            if(response.status != 200){
+                throw 'invalid_credentials';
+            }
             vm.$rootScope.showNavs = true;
             vm.$location.path('/home');
         }).catch(function(){
