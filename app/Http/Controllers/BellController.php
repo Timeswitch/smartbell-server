@@ -52,7 +52,7 @@ class BellController extends APIController
 
             $obj['id'] = $ring->id;
             $obj['date'] = $ring->created_at;
-            $obj['image'] = '';
+            $obj['image'] = $ring->file;
 
             $result['rings'][] = $obj;
 

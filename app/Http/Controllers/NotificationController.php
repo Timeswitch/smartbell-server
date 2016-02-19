@@ -10,18 +10,28 @@ use SmartBell\Http\Controllers\Controller;
 use SmartBell\PushClient;
 use SmartBell\Ring;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Webpatser\Uuid\Uuid;
 
 class NotificationController extends Controller
 {
-    public function ring($uuid, Request $request){
+    public function ring($uuid, Request $req){
         try{
             $bell = Bell::where('uuid',$uuid)->first();
             $user = $bell->user;
 
+            $file = '';
+            if($req->hasFile('image')){
+                $image = $req->file('image');
+                if($image->isValid()){
+                    $file = Uuid::generate(1)->string;
+                    $image->move(public_path() . '/img/uploads/',$file);
+                }
+            }
+
             $ring = Ring::create([
                 'user_id' => $user->id,
                 'bell_id' => $bell->id,
-                'file' => ''
+                'file' => $file
             ]);
 
             $ring->save();

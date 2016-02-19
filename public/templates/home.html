@@ -2,7 +2,7 @@
     <h2 class="md-title">Alle Besuche</h2>
 
     <md-list-item class="md-2-line" ng-repeat="ring in homeController.rings">
-        <img ng-src="{{ring.image}}" class="md-" />
+        <img ng-src="img/uploads/{{ring.image}}" class="md-avatar" />
         <div class="md-list-item-text">
             <h3>{{ ring.date.date }}</h3>
             <p>von "<a href="#/bells/{{ring.bell_id}}">{{ ring.bell }}</a>"</p>

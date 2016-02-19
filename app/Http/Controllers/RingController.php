@@ -19,7 +19,7 @@ class RingController extends APIController
             $obj['date'] = $ring->created_at;
             $obj['bell'] = $ring->bell->name;
             $obj['bell_id'] = $ring->bell_id;
-            $obj['image'] = '';
+            $obj['image'] = $ring->file;
 
             $result[] = $obj;
 
