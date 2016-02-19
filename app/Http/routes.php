@@ -44,7 +44,7 @@ Route::group(['prefix' => 'api'], function () {
             Route::delete('rings/{id}','RingController@destroy');
 
             Route::get('bells/','BellController@index');
-            Route::post('bells/','BellController@getIndex');
+            Route::post('bells/','BellController@post');
             Route::get('bells/{id}','BellController@show');
             Route::post('bells/{id}','BellController@update');
             Route::delete('bells/{id}','BellController@destroy');

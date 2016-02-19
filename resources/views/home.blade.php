@@ -42,8 +42,8 @@
                             <span flex></span>
                         </div>
 
-                        <div layout="row" layout-align="start center" flex>
-                            <md-button ng-repeat="bell in sidenavController.bells" href="#/bells/@{{bell.id}}">
+                        <div ng-repeat="bell in sidenavController.bells" layout="row" layout-align="start center" flex>
+                            <md-button href="#/bells/@{{bell.id}}">
                                 <md-icon md-svg-src="{{ asset('lib/material-design-icons/hardware/svg/production/ic_developer_board_24px.svg') }}"></md-icon>
                                 @{{ bell.name }}
                             </md-button>
