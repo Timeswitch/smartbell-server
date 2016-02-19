@@ -1,12 +1,14 @@
 <md-list ng-cloak flex layout-padding>
     <h2 class="md-title">Alle Besuche</h2>
 
-    <md-list-item class="md-2-line" ng-repeat="ring in homeController.rings">
+    <md-list-item ng-click="homeController.navigate(ring)" class="md-2-line" ng-repeat="ring in homeController.rings">
         <img ng-src="img/uploads/{{ring.image}}" class="md-avatar" ng-if="ring.image != ''"/>
-        <img ng-src="" class="md-avatar" ng-if="ring.image == ''"/>
+        <img  ng-src="lib/material-design-icons/device/svg/production/ic_wallpaper_24px.svg" class="md-avatar" ng-if="ring.image == ''"/>
         <div class="md-list-item-text">
             <h3>{{ ring.date }}</h3>
             <p>von "<a href="#/bells/{{ring.bell_id}}">{{ ring.bell }}</a>"</p>
         </div>
+        <md-icon ng-click="homeController.delete(ring)" class="md-secondary" md-svg-icon="lib/material-design-icons/action/svg/production/ic_delete_24px.svg">
+        </md-icon>
     </md-list-item>
 </md-list>

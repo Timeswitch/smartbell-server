@@ -20,6 +20,7 @@ class RingController extends APIController
             $obj['bell'] = $ring->bell->name;
             $obj['bell_id'] = $ring->bell_id;
             $obj['image'] = $ring->file;
+            $obj['id'] = $ring->id;
 
             $result[] = $obj;
 
@@ -31,7 +32,14 @@ class RingController extends APIController
 
     public function show($id){
         $ring = $this->currentUser->rings()->where('id',$id)->get()->first();
-        return $ring;
+
+        $result = [];
+
+        $result['id'] = $ring->id;
+        $result['image'] = $ring->file;
+        $result['date'] = $ring->created_at->toDateTimeString();
+
+        return $result;
     }
 
     public function destroy($id){

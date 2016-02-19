@@ -99,6 +99,7 @@
         <script src="{{ asset('js/controllers/SignupController.js') }}"></script>
         <script src="{{ asset('js/controllers/HomeController.js') }}"></script>
         <script src="{{ asset('js/controllers/BellController.js') }}"></script>
+        <script src="{{ asset('js/controllers/RingController.js') }}"></script>
         <script src="{{ asset('js/controllers/BellRingController.js') }}"></script>
     </body>
 </html>

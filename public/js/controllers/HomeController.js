@@ -6,8 +6,9 @@
 
     angular.module('smartbell.controllers').controller('HomeController',HomeController);
 
-    function HomeController(Ring){
+    function HomeController(Ring,$location){
         this.Ring = Ring;
+        this.$location = $location;
 
         this.rings = [];
 
@@ -19,7 +20,19 @@
         var vm = this;
 
         vm.rings = vm.Ring.query();
-    }
+    };
+
+    HomeController.prototype.delete = function(ring){
+        var vm = this;
+
+        ring.$delete();
+        vm.loadRings();
+    };
+
+    HomeController.prototype.navigate = function(ring){
+        this.$location.path('rings/'+ring.id);
+    };
+
 
 
 })();

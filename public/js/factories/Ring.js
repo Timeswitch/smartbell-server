@@ -6,6 +6,6 @@
     angular.module('smartbell.factories').factory('Ring',Ring);
 
     function Ring($resource){
-        return $resource('api/v1/rings/:ringId');
+        return $resource('api/v1/rings/:ringId',{ringId: '@id'});
     }
 })();

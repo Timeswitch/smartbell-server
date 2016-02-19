@@ -91,19 +91,24 @@ class NotificationController extends Controller
     }
 
     public function subscribe(Request $req){
-        if (! $currentUser = JWTAuth::parseToken()->authenticate()) {
-            return response()->json(['user_not_found'], 404);
+        try{
+            if (! $currentUser = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            }
+
+            $client = new PushClient();
+            $client->user_id = $currentUser->id;
+
+            if($req->has('push_token')){
+                $client->token = $req->get('push_token');
+                $client->save();
+
+                return $client;
+            }
+        }catch(\Exception $e){
+            return ['error'];
         }
 
-        $client = new PushClient();
-        $client->user_id = $currentUser->id;
-
-        if($req->has('push_token')){
-            $client->token = $req->get('push_token');
-            $client->save();
-
-            return $client;
-        }
 
     }
 
