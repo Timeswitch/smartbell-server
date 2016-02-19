@@ -79,7 +79,7 @@ class NotificationController extends Controller
             $result['bell_id'] = $ring->bell_id;
             $result['bell'] = $ring->bell->name;
             $result['image'] = $ring->file;
-            $result['date'] = $ring->created_at;
+            $result['date'] = $ring->created_at->toDateTimeString();
 
             return $result;
 

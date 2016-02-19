@@ -16,7 +16,7 @@ class RingController extends APIController
         foreach($rings as $ring){
             $obj = [];
 
-            $obj['date'] = $ring->created_at;
+            $obj['date'] = $ring->created_at->toDateTimeString();
             $obj['bell'] = $ring->bell->name;
             $obj['bell_id'] = $ring->bell_id;
             $obj['image'] = $ring->file;
