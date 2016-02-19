@@ -11,4 +11,3 @@ Homestead.json
 /.vagrant
 .env
 /.idea
-.env.example
