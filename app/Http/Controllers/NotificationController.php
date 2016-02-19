@@ -69,9 +69,9 @@ class NotificationController extends Controller
     }
 
     public function getRing($token){
-        try{
+//        try{
             $user = PushClient::where('token',$token)->first()->user;
-            $ring = $user->rings()->first();
+            $ring = $user->rings->last();
 
             $result = [];
 
@@ -79,12 +79,13 @@ class NotificationController extends Controller
             $result['bell_id'] = $ring->bell_id;
             $result['bell'] = $ring->bell->name;
             $result['image'] = $ring->file;
+            $result['date'] = $ring->created_at;
 
             return $result;
 
-        }catch(\Exception $e){
-            return response()->json(['resource_not_found'], 404);
-        }
+//        }catch(\Exception $e){
+//            return response()->json(['resource_not_found'], 404);
+//        }
 
 
     }

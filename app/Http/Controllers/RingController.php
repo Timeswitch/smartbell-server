@@ -31,7 +31,7 @@ class RingController extends APIController
 
     public function show($id){
         $ring = $this->currentUser->rings()->where('id',$id)->get()->first();
-        //TODO machen
+        return $ring;
     }
 
     public function destroy($id){
