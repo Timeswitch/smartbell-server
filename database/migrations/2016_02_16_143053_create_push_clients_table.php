@@ -15,7 +15,7 @@ class CreatePushClientsTable extends Migration
         Schema::create('push_clients', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('token');
+            $table->string('token')->unique();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

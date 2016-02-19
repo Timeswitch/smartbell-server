@@ -62,8 +62,8 @@ class NotificationController extends Controller
         $client = new PushClient();
         $client->user_id = $currentUser->id;
 
-        if($req->has('token')){
-            $client->token = $req->get('token');
+        if($req->has('push_token')){
+            $client->token = $req->get('push_token');
             $client->save();
 
             return $client;
@@ -72,15 +72,15 @@ class NotificationController extends Controller
     }
 
     public function unsubscribe(Request $req){
-        if (! $currentUser = JWTAuth::parseToken()->authenticate()) {
-            return response()->json(['user_not_found'], 404);
-        }
+        try{
+            if($req->has('push_token')){
+                $client = PushClient::where('token',$req->get('push_token'))->first();
+                $client->delete();
 
-        $client = $currentUser->push_clients->where('token',$req->get('token'))->first();
-
-        if($client && $req->has('token')){
-            $client = $currentUser->push_clients->where('token',$req->get('token'))->first();
-            $client->delete();
+                return ['success'];
+            }
+        }catch(\Exception $e){
+            return ['failure'];
         }
     }
 
@@ -91,8 +91,8 @@ class NotificationController extends Controller
 
         $client = $currentUser->push_clients()->where('id',$id)->first();
 
-        if($req->has('token')){
-            $client->token = $req->get('token');
+        if($req->has('push_token')){
+            $client->token = $req->get('push_token');
             $client->save();
 
             return $client;

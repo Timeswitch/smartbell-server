@@ -33,6 +33,7 @@ Route::group(['prefix' => 'api'], function () {
 
         Route::post('ring/{uuid}','NotificationController@ring');
         Route::post('subscribe','NotificationController@subscribe');
+        Route::post('unsubscribe','NotificationController@unsubscribe');
         Route::post('subscribe/{id}','NotificationController@refresh');
 
         Route::group(['middleware' => ['jwt.auth','jwt.refresh']], function (){

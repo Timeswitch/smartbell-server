@@ -51,7 +51,7 @@
                     if (!subscription) {
 
                         if(svc.enabled){
-                            return this.subscribe();
+                            return svc.subscribe();
                         }
                         return;
                     }
@@ -98,16 +98,16 @@
 
     GCMService.prototype.unsubscribe = function(){
         var svc = this;
-        var token = /[^/]*$/.exec(svc.subscription.endpoint)[0];
 
         if(svc.subscribtion != null){
+            var token = /[^/]*$/.exec(svc.subscribtion.endpoint)[0];
             svc.subscribtion.unsubscribe().then(function(){
                 svc.enabled = false;
                 var httpConfig = {
                     method: 'POST',
                     url: 'api/v1/unsubscribe',
                     data: {
-                        token: token
+                        push_token: token
                     }
                 };
 
@@ -129,7 +129,7 @@
             method: 'POST',
             url: 'api/v1/subscribe',
             data: {
-                token: token
+                push_token: token
             }
         };
 
