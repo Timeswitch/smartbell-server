@@ -9,6 +9,7 @@ use SmartBell\Bell;
 use SmartBell\Http\Requests;
 use SmartBell\Http\Controllers\Controller;
 use SmartBell\Ring;
+use Webpatser\Uuid\Uuid;
 
 class BellController extends APIController
 {
@@ -33,7 +34,14 @@ class BellController extends APIController
     }
 
     public function post(Request $req){
-        //TODO implementieren
+        $bell = Bell::create([
+            'user_id' => $this->currentUser->id,
+            'name' => $req->get('name'),
+            'active' => '1',
+            'uuid' => Uuid::generate(1)->string
+        ]);
+
+        return $bell;
     }
 
     public function show($id) {

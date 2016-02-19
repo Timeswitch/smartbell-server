@@ -17,12 +17,20 @@ class AuthenticationController extends Controller
 
         $data = $req->all();
 
-        //TODO Validation
+        if($data['password'] != $data['passwordRepeat'] && $data['password'] != '' && $data['email'] != ''){
+            return response()->json(['input_error'],400);
+        }
 
-        User::create([
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        try{
+            User::create([
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+            ]);
+        }catch(\Exception $e){
+            return response()->json(['db_error'],400);
+        }
+
+
     }
 
     public function postLogin(Request $req){

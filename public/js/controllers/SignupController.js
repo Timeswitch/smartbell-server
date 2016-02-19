@@ -30,8 +30,13 @@
         var vm = this;
 
         vm.$auth.signup(vm.user)
-            .then(function(){
-                vm.$location.path('/login');
+            .then(function(response){
+                if(response.status == 200){
+                    vm.$location.path('/login');
+                }
+
+                vm.formErrors =true;
+
             }).catch(function(){
                 vm.formErrors = true;
             });
