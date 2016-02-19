@@ -31,7 +31,8 @@ Route::group(['prefix' => 'api'], function () {
 
         Route::controller('auth','AuthenticationController');
 
-        Route::post('ring/{uuid}','NotificationController@ring');
+        Route::post('ring/{uuid}','NotificationController@postRing');
+        Route::get('ring/{token}','NotificationController@getRing');
         Route::post('subscribe','NotificationController@subscribe');
         Route::post('unsubscribe','NotificationController@unsubscribe');
         Route::post('subscribe/{id}','NotificationController@refresh');

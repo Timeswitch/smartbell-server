@@ -14,7 +14,7 @@ use Webpatser\Uuid\Uuid;
 
 class NotificationController extends Controller
 {
-    public function ring($uuid, Request $req){
+    public function postRing($uuid, Request $req){
         try{
             $bell = Bell::where('uuid',$uuid)->first();
             $user = $bell->user;
@@ -51,8 +51,12 @@ class NotificationController extends Controller
                 $res = $http->request('POST','https://android.googleapis.com/gcm/send',[
                     'headers' => ['Authorization' => 'key='.env('SMARTBELL_GCM')],
                     'json' => [
-                        "registration_ids" => $token
-                    ] //TODO weiter machen
+                        "registration_ids" => $token,
+                        "data" => [
+                            "image" => $file,
+                            "name" => $bell->name
+                        ]
+                    ]
 
                 ]);
 
@@ -62,6 +66,27 @@ class NotificationController extends Controller
         }catch(\Exception $e){
             return ['failure'];
         }
+    }
+
+    public function getRing($token){
+        try{
+            $user = PushClient::where('token',$token)->first()->user;
+            $ring = $user->rings()->first();
+
+            $result = [];
+
+            $result['id'] = $ring->id;
+            $result['bell_id'] = $ring->bell_id;
+            $result['bell'] = $ring->bell->name;
+            $ring['image'] = $ring->file;
+
+            return $result;
+
+        }catch(\Exception $e){
+            return response()->json(['resource_not_found'], 404);
+        }
+
+
     }
 
     public function subscribe(Request $req){
@@ -90,7 +115,7 @@ class NotificationController extends Controller
                 return ['success'];
             }
         }catch(\Exception $e){
-            return ['failure'];
+            return response()->json(['resource_not_found'], 404);
         }
     }
 

@@ -19,12 +19,18 @@
     self.addEventListener('push', function(event) {
         console.log('Push message', event);
 
-        var title = 'Push message';
+        event.waitUntil(self.registration.pushManager.getSubscription().then(function(subscription) {
 
-        event.waitUntil(
-            self.registration.showNotification(title, {
-                'body': 'The Message',
-                'icon': 'images/icon.png'
-            }));
+            var token = /[^/]*$/.exec(subscription.endpoint)[0];
+            return fetch('api/v1/ring/'+token).then(function(response){
+                return response.json();
+            }).then(function(data){
+                return self.registration.showNotification('SmartBell',{
+                    'body': data.bell,
+                    'icon': 'img/uploads/'+data.image
+                });
+            });
+
+        }));
     });
 })();
