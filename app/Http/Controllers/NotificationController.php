@@ -78,7 +78,7 @@ class NotificationController extends Controller
             $result['id'] = $ring->id;
             $result['bell_id'] = $ring->bell_id;
             $result['bell'] = $ring->bell->name;
-            $ring['image'] = $ring->file;
+            $result['image'] = $ring->file;
 
             return $result;
 
