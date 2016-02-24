@@ -1,14 +1,15 @@
 <div flex layout-padding layout="row" layout-align="center">
     <div flex-xs flex-gt-xs="80" flex-lg="50" layout="column" layout-padding>
-        <md-whiteframe class=".md-whiteframe-1dp" >
-            <img ng-src="img/uploads/{{ ringController.ring.image }}" class="md-card-image" ng-if="ringController.ring.image != ''">
-            <img style="width: 80%; height: auto;" ng-src="lib/material-design-icons/device/svg/production/ic_wallpaper_24px.svg" class="md-card-image" ng-if="ringController.ring.image == ''">
-
+        <md-card>
+            <md-card-content>
+                <img style="width: 80%; height: auto;" ng-src="img/uploads/{{ ringController.ring.image }}" class="md-card-image" ng-if="ringController.ring.image != ''">
+                <img style="width: 80%; height: auto;" ng-src="lib/material-design-icons/device/svg/production/ic_wallpaper_24px.svg" class="md-card-image" ng-if="ringController.ring.image == ''">
+            </md-card-content>
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">{{ ringController.ring.date }}</span>
                 </md-card-title-text>
             </md-card-title>
-        </md-whiteframe>
+        </md-card>
     </div>
 </div>
