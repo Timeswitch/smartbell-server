@@ -38,6 +38,8 @@ class RingController extends APIController
         $result['id'] = $ring->id;
         $result['image'] = $ring->file;
         $result['date'] = $ring->created_at->toDateTimeString();
+        $result['bell'] = $ring->bell->name;
+        $result['bell_id'] = $ring->bell_id;
 
         return $result;
     }
