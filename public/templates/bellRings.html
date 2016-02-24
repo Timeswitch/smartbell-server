@@ -2,8 +2,8 @@
     <h2 class="md-title">Besuche von "{{ bellRingController.bell.name }}"</h2>
 
     <md-list-item ng-click="bellRingController.navigate(ring)" ng-repeat="ring in bellRingController.rings">
-        <img ng-src="img/uploads/{{ring.image}}" class="md-avatar" ng-if="ring.image != ''"/>
-        <img  ng-src="lib/material-design-icons/device/svg/production/ic_wallpaper_24px.svg" class="md-avatar" ng-if="ring.image == ''"/>
+        <img ng-src="img/uploads/{{ring.image}}" class="md-card-image" ng-if="ring.image != ''"/>
+        <img  ng-src="lib/material-design-icons/device/svg/production/ic_wallpaper_24px.svg" class="md-card-image" ng-if="ring.image == ''"/>
         <div class="md-list-item-text">
             <p>{{ ring.date }}</p>
         </div>
